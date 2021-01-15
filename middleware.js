@@ -32,3 +32,7 @@ function restrict(){
 module.exports = {
     restrict
 }
+
+//don't forget to put token from "login" and copy it without
+//quotations. Put it in header of insomnia and name it authorization
+//or whatever you want to call it on line 10
