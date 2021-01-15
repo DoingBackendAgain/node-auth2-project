@@ -1,0 +1,1 @@
+//require("dotenv").config() this goes here or in json
