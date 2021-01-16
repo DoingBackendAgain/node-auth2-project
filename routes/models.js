@@ -3,6 +3,7 @@ const db = require("../data/config")
 module.exports = {
     add,
     find,
+    findBy,
     findByUsername,
     findByDepartment,
     findById
@@ -17,6 +18,12 @@ async function add(user){
 function find(){
     return db("users")
         .select("id", "username", "department")
+}
+
+function findBy(filter){
+    return db("users")
+        .select("username", "department")
+        .where(filter)
 }
 
 function findByUsername(username){

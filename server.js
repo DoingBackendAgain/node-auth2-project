@@ -12,7 +12,7 @@ server.use(express.json());
 server.use(session({
     resave: false,
     saveUninitialized: false,
-    //secret: "keep it secret",
+    secret: "keep it secret",
     store: new knexSessionStore({
         knex: dbConfig,
         createtable: true
