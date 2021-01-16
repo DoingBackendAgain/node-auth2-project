@@ -29,11 +29,13 @@ function findBy(filter){
 function findByUsername(username){
     return db("users")
         .select("username")
+        .where({username}, username)
 }
 
 function findByDepartment(department){
     return db("users")
         .select("department")
+        .where("department", department)
 }
 
 function findById(id){

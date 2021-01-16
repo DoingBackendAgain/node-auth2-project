@@ -72,7 +72,8 @@ router.post("/login", async (req, res, next)=> {
          }, "keep it secret")
 
          res.json({
-             message: `Welcome ${user.username}!`
+             message: `Welcome ${user.username}!`,
+             token: token
          })
     }
     catch(err){
