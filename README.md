@@ -55,4 +55,4 @@ Follow these steps for completing your project.
 
 ****************
 JWT_SECRET= ""
-********************
+****************

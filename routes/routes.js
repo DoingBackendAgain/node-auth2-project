@@ -6,7 +6,7 @@ const {restrict} = require("./middleware")
 
 const router = express.Router()
 
-router.get("/users", restrict(), async (req, res, next)=> {
+router.get("/users", restrict("admin"), async (req, res, next)=> {
     try{
         model.find()
             .then((user)=> {
@@ -69,7 +69,7 @@ router.post("/login", async (req, res, next)=> {
 
          const token = jwt.sign({
              userID: user.id,
-             userRole: "basic"
+             userRole: "admin"
          }, process.env.JWT_SECRET)
 
          res.json({
