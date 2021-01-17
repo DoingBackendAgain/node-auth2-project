@@ -11,6 +11,7 @@ function restrict(role){
 
         try {
             const token = req.headers.authorization
+            //const token = req.cookies.token
 
             if(!token){
                 return res.status(401).json(authError)
@@ -71,3 +72,6 @@ module.exports = {
 // }
 // give restrict perameter(whichever role you want to have access)
 // in route your restricting in route file.
+// 
+//user role is being defined and is hard coded in login route
+//

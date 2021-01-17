@@ -72,9 +72,12 @@ router.post("/login", async (req, res, next)=> {
              userRole: "admin"
          }, process.env.JWT_SECRET)
 
+         //cookies
+         //res.cookie("token", token)
          res.json({
              message: `Welcome ${user.username}!`,
              token: token
+
          })
     }
     catch(err){
