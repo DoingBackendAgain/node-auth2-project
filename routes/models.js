@@ -22,7 +22,7 @@ function find(){
 
 function findBy(filter){
     return db("users")
-        .select("username", "department")
+        .select("username", "password" ,"department")
         .where(filter)
 }
 

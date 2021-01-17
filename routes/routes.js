@@ -21,7 +21,7 @@ router.get("/users", async (req, res, next)=> {
 
 router.post("/users", async (req, res, next)=> {
     try{
-    const {username, password} = req.body
+    const {username, password, department} = req.body
     const user = await model.findByUsername({username}).first()
     
     if(user){
@@ -32,7 +32,8 @@ router.post("/users", async (req, res, next)=> {
 
     const newUser = await model.add({
         username,
-        password: await bcrypt.hash(password, 10)
+        password: await bcrypt.hash(password, 10),
+        department
     })
 
     res.status(201).json(newUser)
@@ -48,7 +49,7 @@ router.post("/users", async (req, res, next)=> {
 router.post("/login", async (req, res, next)=> {
     try {
         const {username, password} = req.body
-        const user = await model.findByUsername({username}).first()
+        const user = await model.findBy({username}).first()
 
         if(!user){
             return res.status(401).json({
@@ -63,7 +64,7 @@ router.post("/login", async (req, res, next)=> {
              })
          }
 
-         //req.session.user = user
+         req.session.user = user
          //generate token instead
 
          const token = jwt.sign({
