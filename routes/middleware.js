@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken")
 
 const roles = ["basic", "admin"]
 
-function restrict(role = "basic"){
+function restrict(){
     return async (req, res, next) => {
         const authError = {
             message: "Invalid Credentials"
@@ -20,11 +20,11 @@ function restrict(role = "basic"){
                     return res.status(401).json(authError)
                 }
 
-                if (role && role.indexOf(decoded.userRole)< roles.indexOf(role)){
-                    return res.status(403).json({
-                        message: "You are not allowed here"
-                    })
-                }
+                // if (role && role.indexOf(decoded.userRole)< roles.indexOf(role)){
+                //     return res.status(403).json({
+                //         message: "You are not allowed here"
+                //     })
+                // }
 
                 req.token = decoded
 
@@ -41,9 +41,10 @@ module.exports = {
     restrict
 }
 
+//tokens instead of sessions-----
 //don't forget to put token from "login" and copy it without
 //quotations. Put it in header of insomnia and name it authorization
-//or whatever you want to call it on line 10
+//or whatever you want to call it in this file "const token = "
 
 //replace hard coded "token, secret" with .env
 
